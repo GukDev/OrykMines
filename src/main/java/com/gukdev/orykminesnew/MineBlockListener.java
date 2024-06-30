@@ -28,8 +28,6 @@ public class MineBlockListener implements Listener {
 
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
-        block.setType(Material.COBBLESTONE); // Start the regeneration cycle
-        Bukkit.getScheduler().runTaskLater(plugin, new BlockRegenerationTask(block, block.getType(), plugin), 15 * 20L);
         Player player = event.getPlayer();
         Block block = event.getBlock();
         if (mineRegionManager.isInMineRegion(player)) {
@@ -47,6 +45,7 @@ public class MineBlockListener implements Listener {
                         player.playSound(block.getLocation(), "minecraft:block.anvil.use", 1.0f, 1.0f);
                     }
                     block.setType(Material.COBBLESTONE); // Start the regeneration cycle
+                    Bukkit.getScheduler().runTaskLater(plugin, new BlockRegenerationTask(block, block.getType(), plugin), 15 * 20L);
                 }
             }
         }

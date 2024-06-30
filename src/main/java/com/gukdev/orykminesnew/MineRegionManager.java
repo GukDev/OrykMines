@@ -35,6 +35,7 @@ public class MineRegionManager {
             MineRegion mineRegion = new MineRegion(regionName);
             mineRegion.loadFromConfig(config);
             mineRegions.put(regionName, mineRegion);
+            plugin.getLogger().info("Loaded mine region: " + regionName);
         }
     }
 

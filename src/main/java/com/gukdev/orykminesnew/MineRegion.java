@@ -15,16 +15,6 @@ public class MineRegion {
         this.blocks = new HashMap<>();
     }
 
-    public void loadMineRegions() {
-        FileConfiguration config = plugin.getConfig();
-        for (String regionName : config.getConfigurationSection("mines").getKeys(false)) {
-            MineRegion mineRegion = new MineRegion(regionName);
-            mineRegion.loadFromConfig(config);
-            mineRegions.put(regionName, mineRegion);
-            plugin.getLogger().info("Loaded mine region: " + regionName);
-        }
-    }
-
     public void loadFromConfig(FileConfiguration config) {
         String path = "mines." + name + ".blocks";
         for (String blockName : config.getConfigurationSection(path).getKeys(false)) {

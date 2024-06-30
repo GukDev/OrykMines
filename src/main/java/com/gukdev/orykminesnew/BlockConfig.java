@@ -6,7 +6,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import java.util.HashMap;
 import java.util.Map;
 
-class BlockConfig {
+public class BlockConfig {
     private double chance;
     private Map<Material, Double> drops;
     private boolean soundEffect;
