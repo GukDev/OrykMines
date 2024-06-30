@@ -1,10 +1,10 @@
 package com.gukdev.orykminesnew;
 
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
-import com.sk89q.worldguard.bukkit.WorldGuardPlugin;
+import com.sk89q.worldguard.WorldGuard;
 import com.sk89q.worldguard.protection.ApplicableRegionSet;
-import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.RegionContainer;
+import com.sk89q.worldguard.protection.managers.RegionManager;
 import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
@@ -26,6 +26,10 @@ public class MineRegionManager {
         loadMineRegions();
     }
 
+    public JavaPlugin getPlugin() {
+        return plugin;
+    }
+
     public void loadMineRegions() {
         FileConfiguration config = plugin.getConfig();
         for (String regionName : config.getConfigurationSection("mines").getKeys(false)) {
@@ -36,9 +40,16 @@ public class MineRegionManager {
         }
     }
 
+    public void createRegion(String regionName) {
+        MineRegion mineRegion = new MineRegion(regionName);
+        mineRegions.put(regionName, mineRegion);
+        plugin.getConfig().set("mines." + regionName, new HashMap<>());
+        plugin.saveConfig();
+    }
+
     public boolean isInMineRegion(Player player) {
         Location loc = player.getLocation();
-        RegionContainer container = com.sk89q.worldguard.WorldGuard.getInstance().getPlatform().getRegionContainer();
+        RegionContainer container = WorldGuard.getInstance().getPlatform().getRegionContainer();
         RegionManager regionManager = container.get(BukkitAdapter.adapt(loc.getWorld()));
         if (regionManager == null) {
             return false;

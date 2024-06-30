@@ -15,7 +15,7 @@ public class OrykMinesNew extends JavaPlugin {
         mineRegionManager = new MineRegionManager(this);
         orykMinesMenu = new OrykMinesMenu(mineRegionManager);
 
-        getCommand("orykmines").setExecutor(new OrykMinesCommand(orykMinesMenu));
+        getCommand("orykmines").setExecutor(new OrykMinesCommand(orykMinesMenu, mineRegionManager));
         new MineBlockListener(this, mineRegionManager);
         new PlayerListener(this, mineRegionManager);
     }
