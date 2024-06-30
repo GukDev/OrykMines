@@ -28,4 +28,8 @@ public class MineRegion {
     public Map<Material, BlockConfig> getBlocks() {
         return blocks;
     }
+
+    public String getName() {
+        return name;
+    }
 }

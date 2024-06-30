@@ -9,7 +9,6 @@ public class OrykMinesNew extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
         getLogger().info("OrykMinesNew has been enabled!");
         saveDefaultConfig();
 
@@ -23,7 +22,6 @@ public class OrykMinesNew extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
         getLogger().info("OrykMinesNew has been disabled!");
     }
 }
