@@ -1,0 +1,21 @@
+name: OrykMinesNew
+version: 1.0
+main: com.orykmines.OrykMinesNew
+api-version: 1.16
+depend: [WorldGuard]
+commands:
+  orykmines:
+    description: Main command for OrykMinesNew plugin
+permissions:
+  orykmines.admin:
+    description: Allows admin access to OrykMines plugin features.
+    default: op
+  orykmines.create:
+    description: Allows the creation of new mine regions.
+    default: op
+  orykmines.edit:
+    description: Allows editing of existing mine regions.
+    default: op
+  orykmines.delete:
+    description: Allows deletion of mine regions.
+    default: op
